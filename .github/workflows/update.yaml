@@ -103,20 +103,6 @@ jobs:
       if: "github.event_name != 'pull_request'"
       name: "Deploy to GitHub Pages"
       uses: "actions/deploy-pages@v4"
-    - name: "Download artifact"
-      uses: "actions/download-artifact@v4"
-      with:
-        name: "github-pages"
-    - name: "Release artifact"
-      uses: "softprops/action-gh-release@v2"
-      with:
-        body: "Rolling Pages artifact"
-        draft: false
-        files:
-        - "artifact.tar"
-        prerelease: false
-        tag_name: "github-pages"
-        token: "${{ secrets.GITHUB_TOKEN }}"
     - if: "steps.deploy.outcome == 'success'"
       name: "Commit package snapshot"
       run: |
@@ -124,6 +110,20 @@ jobs:
         git push
         popd
       shell: "bash"
+    - name: "Download artifact"
+      uses: "actions/download-artifact@v4"
+      with:
+        name: "github-pages"
+    - if: "steps.deploy.outcome == 'success'"
+      name: "Release artifact"
+      uses: "softprops/action-gh-release@v2"
+      with:
+        body: "Rolling Pages artifact"
+        draft: false
+        files: "artifact.tar"
+        prerelease: false
+        tag_name: "github-pages"
+        token: "${{ secrets.GITHUB_TOKEN }}"
 name: "Update packages"
 "on":
   repository_dispatch:
