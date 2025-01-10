@@ -22,7 +22,7 @@ jobs:
     - name: "Checkout rsdk"
       uses: "actions/checkout@v4"
       with:
-        ref: "28297bcc450bb32cf2bcbe69344b7b962f41bf3b"
+        ref: "476c013766033e231cff35d10717ceed5edf43e3"
         repository: "RadxaOS-SDK/rsdk"
     - name: "Checkout current repo"
       uses: "actions/checkout@v4"
@@ -110,12 +110,12 @@ jobs:
         git push
         popd
       shell: "bash"
-    - name: "Download artifact"
+    - name: "Download Pages artifact"
       uses: "actions/download-artifact@v4"
       with:
         name: "github-pages"
     - if: "steps.deploy.outcome == 'success'"
-      name: "Release artifact"
+      name: "Release Pages artifact"
       uses: "softprops/action-gh-release@v2"
       with:
         body: "Rolling Pages artifact"
