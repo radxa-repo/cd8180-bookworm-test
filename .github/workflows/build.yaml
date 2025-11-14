@@ -12,7 +12,7 @@ jobs:
     - name: "Checkout rsdk"
       uses: "actions/checkout@v5"
       with:
-        ref: "a517c44016c34e594c939dd84660e3944e35944e"
+        ref: "26e84041f8f7ff5a0f45e31ac508755d6e4059c9"
         repository: "RadxaOS-SDK/rsdk"
     - name: "Checkout current repo"
       uses: "actions/checkout@v5"
@@ -81,7 +81,7 @@ jobs:
       name: "Deploy to GitHub Pages"
       uses: "actions/deploy-pages@v4"
     - name: "Download Pages artifact"
-      uses: "actions/download-artifact@v5"
+      uses: "actions/download-artifact@v6"
       with:
         name: "github-pages"
     - if: "steps.deploy.outcome == 'success'"
