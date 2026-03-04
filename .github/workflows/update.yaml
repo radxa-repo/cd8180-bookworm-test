@@ -14,13 +14,15 @@ jobs:
       with:
         script: |
           const secrets = JSON.parse(process.env.SECRETS);
-          if (secrets.GPG_KEY === undefined || secrets.RADXA_APT_KEY_2024 === undefined) {
+          if (secrets.RADXA_APT_KEY_2024 === undefined ||
+              secrets.GPG_KEY === undefined ||
+              secrets.RADXA_APT_KEY_2026 === undefined) {
               core.setFailed('Required secrets are unset!');
           }
     - name: "Checkout rsdk"
       uses: "actions/checkout@v6"
       with:
-        ref: "9688076d236791c56e349414c6238eaa2763bd45"
+        ref: "35b99330ce2940e1a85d0aea49d5fce466dec321"
         repository: "RadxaOS-SDK/rsdk"
     - name: "Checkout current repo"
       uses: "actions/checkout@v6"
@@ -38,6 +40,9 @@ jobs:
             mv pkgs.lock.new pkgs.lock
             git add pkgs.lock
         fi
+        
+        # Clean up wget file in case it failed (for example no lock in test repo)
+        rm -f pkgs.lock.new
         
         ../src/bin/rsdk infra-pkg-snapshot
         git add pkgs.json
