@@ -39,7 +39,7 @@
   "linux-rk2410": "6.1.84-8",
   "linux-rk2501": "6.1.115-8",
   "linux-rk356x": "5.10.160-39",
-  "linux-sky1": "6.6.89-4",
+  "linux-sky1": "6.6.89-5",
   "linux-stable": "6.1.68-3",
   "mesa": "git2407100600.ae3e0a.oibaf.j",
   "mpv-build": "2025.03.23.8d2ed139cd-1",
