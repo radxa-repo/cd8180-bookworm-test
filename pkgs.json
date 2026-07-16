@@ -39,7 +39,7 @@
   "linux-rk2410": "6.1.84-8",
   "linux-rk2501": "6.1.115-8",
   "linux-rk356x": "5.10.160-39",
-  "linux-sky1": "6.6.89-5",
+  "linux-sky1": "6.6.89-6",
   "linux-stable": "6.1.68-3",
   "llama.cpp": "0.0.10034-1",
   "mesa": "git2407100600.ae3e0a.oibaf.j",
